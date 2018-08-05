@@ -1,5 +1,8 @@
 #pragma once
 
+#define TEXT_TEATIME_EXIT "Exit"
+#define TEXT_TEATIME_SETTINGS "Settings"
+
 namespace TeaTime {
 
 	using namespace System;
@@ -41,9 +44,26 @@ namespace TeaTime {
 			this->mWinTrayObject->Icon = System::Drawing::SystemIcons::WinLogo;
 			// some VERY informative description
 			this->mWinTrayObject->Text = "Steep your tea right!";
+
+			System::Windows::Forms::MenuItem ^settingsMenuItem = 
+				gcnew System::Windows::Forms::MenuItem();
+			settingsMenuItem->Text = TEXT_TEATIME_SETTINGS;
+			settingsMenuItem->Index = 4;
+			//settingsMenuItem->Click +=
+
+			mWinContextMenu->MenuItems->Add(settingsMenuItem);
+
+			System::Windows::Forms::MenuItem ^exitMenuItem =
+				gcnew System::Windows::Forms::MenuItem();
+			exitMenuItem->Text = TEXT_TEATIME_EXIT;
+			exitMenuItem->Index = 5;
+			exitMenuItem->Click += gcnew System::EventHandler(&TeaTime::exit);
+
+			mWinContextMenu->MenuItems->Add(exitMenuItem);
 			
 			// make it visible
 			this->mWinTrayObject->Visible = true;
+
 			// last step resume layout
 			this->ResumeLayout(false);
 			
@@ -67,6 +87,10 @@ namespace TeaTime {
 			if (this->mWinContextMenu) {
 				delete this->mWinContextMenu;
 			}
+		}
+
+		static void exit(System::Object^ sender, System::EventArgs^ args) {
+			System::Windows::Forms::Application::Exit();
 		}
 
 	private:
