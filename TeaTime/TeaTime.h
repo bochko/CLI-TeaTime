@@ -18,8 +18,36 @@ namespace TeaTime {
 		TeaTime(void)
 		{
 			InitializeComponent();
+
 #pragma region Custom ctor code
 			// ctor after component initialization
+			
+			// system tray component init
+			this->mWinTrayObject = 
+				gcnew System::Windows::Forms::NotifyIcon(
+					gcnew System::ComponentModel::Container()
+				);
+
+			// context menu soon-to-be tray component child init
+			this->mWinContextMenu = 
+				gcnew System::Windows::Forms::ContextMenu();
+
+			// suspend this form's layout
+			this->SuspendLayout();
+
+			// associate tray component context menu with this private context menu
+			this->mWinTrayObject->ContextMenu = this->mWinContextMenu;
+			// icon is WINAPI default application icon
+			this->mWinTrayObject->Icon = System::Drawing::SystemIcons::WinLogo;
+			// some VERY informative description
+			this->mWinTrayObject->Text = "Steep your tea right!";
+			
+			// make it visible
+			this->mWinTrayObject->Visible = true;
+			// last step resume layout
+			this->ResumeLayout(false);
+			
+
 #pragma endregion
 		}
 
@@ -33,6 +61,12 @@ namespace TeaTime {
 			{
 				delete components;
 			}
+			if (this->mWinTrayObject) {
+				delete this->mWinTrayObject;
+			}
+			if (this->mWinContextMenu) {
+				delete this->mWinContextMenu;
+			}
 		}
 
 	private:
@@ -40,6 +74,14 @@ namespace TeaTime {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+
+#pragma region Custom components
+		// custom component declaration
+		System::Windows::Forms::NotifyIcon ^mWinTrayObject;
+		System::Windows::Forms::ContextMenu ^mWinContextMenu;
+
+
+#pragma endregion
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
