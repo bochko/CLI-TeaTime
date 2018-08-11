@@ -141,11 +141,19 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TeaTime.cpp" />
+    <ClCompile Include="TrayNotifyIcon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TeaTime.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="TrayNotifyIcon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="TeaTime_Icon.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

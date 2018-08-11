@@ -21,54 +21,6 @@ namespace TeaTime {
 		TeaTime(void)
 		{
 			InitializeComponent();
-
-#pragma region Custom ctor code
-			// ctor after component initialization
-			
-			// system tray component init
-			this->mWinTrayObject = 
-				gcnew System::Windows::Forms::NotifyIcon(
-					gcnew System::ComponentModel::Container()
-				);
-
-			// context menu soon-to-be tray component child init
-			this->mWinContextMenu = 
-				gcnew System::Windows::Forms::ContextMenu();
-
-			// suspend this form's layout
-			this->SuspendLayout();
-
-			// associate tray component context menu with this private context menu
-			this->mWinTrayObject->ContextMenu = this->mWinContextMenu;
-			// icon is WINAPI default application icon
-			this->mWinTrayObject->Icon = System::Drawing::SystemIcons::WinLogo;
-			// some VERY informative description
-			this->mWinTrayObject->Text = "Steep your tea right!";
-
-			System::Windows::Forms::MenuItem ^settingsMenuItem = 
-				gcnew System::Windows::Forms::MenuItem();
-			settingsMenuItem->Text = TEXT_TEATIME_SETTINGS;
-			settingsMenuItem->Index = 4;
-			//settingsMenuItem->Click +=
-
-			mWinContextMenu->MenuItems->Add(settingsMenuItem);
-
-			System::Windows::Forms::MenuItem ^exitMenuItem =
-				gcnew System::Windows::Forms::MenuItem();
-			exitMenuItem->Text = TEXT_TEATIME_EXIT;
-			exitMenuItem->Index = 5;
-			exitMenuItem->Click += gcnew System::EventHandler(&TeaTime::exit);
-
-			mWinContextMenu->MenuItems->Add(exitMenuItem);
-			
-			// make it visible
-			this->mWinTrayObject->Visible = true;
-
-			// last step resume layout
-			this->ResumeLayout(false);
-			
-
-#pragma endregion
 		}
 
 	protected:
@@ -80,12 +32,6 @@ namespace TeaTime {
 			if (components)
 			{
 				delete components;
-			}
-			if (this->mWinTrayObject) {
-				delete this->mWinTrayObject;
-			}
-			if (this->mWinContextMenu) {
-				delete this->mWinContextMenu;
 			}
 		}
 

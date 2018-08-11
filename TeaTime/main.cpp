@@ -1,4 +1,5 @@
 #include "TeaTime.h"
+#include "TrayNotifyIcon.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -7,6 +8,8 @@ using namespace System::Windows::Forms;
 void main (array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	TeaTime::TeaTime mWinForm;
-	Application::Run(%mWinForm);
+	
+	TeaTime::Tray^ trayObject = gcnew TeaTime::Tray();
+	trayObject->enable();
+	Application::Run();
 }
