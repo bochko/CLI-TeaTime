@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TeaTime.cpp" />
+    <ClCompile Include="TimerThread.cpp" />
     <ClCompile Include="TrayNotifyIcon.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx" />
+    <EmbeddedResource Include="TeaTime.resx">
+      <DependentUpon>TeaTime.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Image Include="TeaTime_Icon.png" />
