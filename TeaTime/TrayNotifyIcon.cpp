@@ -14,14 +14,21 @@
 			// associate tray component context menu with this private context menu
 			this->mWinTrayObject->ContextMenu = this->mWinContextMenu;
 			// icon is WINAPI default application icon
-			auto resourceAssembly = Reflection::Assembly::GetExecutingAssembly();
-			auto resourceName = resourceAssembly->GetName()->Name + ".Resources";
-			auto resourceManager = gcnew Resources::ResourceManager(resourceName, resourceAssembly);
+			auto resourceAssembly = 
+				Reflection::Assembly::GetExecutingAssembly();
+
+			auto resourceName = 
+				resourceAssembly->GetName()->Name + ".Resources";
+
+			auto resourceManager = 
+				gcnew Resources::ResourceManager(resourceName, resourceAssembly);
+
 			System::Drawing::Bitmap^ bmp =
 				gcnew System::Drawing::Bitmap(
 					dynamic_cast<System::Drawing::Image^>(resourceManager->GetObject("TeaTime_Icon"))
 				);
-			this->mWinTrayObject->Icon = System::Drawing::Icon::FromHandle(bmp->GetHicon());//System::Drawing::SystemIcons::WinLogo;
+			this->mWinTrayObject->Icon = 
+				System::Drawing::Icon::FromHandle(bmp->GetHicon());
 			// some VERY informative description
 			this->mWinTrayObject->Text = "TeaTime!";
 

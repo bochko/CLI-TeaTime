@@ -24,7 +24,7 @@
     <ClCompile Include="TrayNotifyIcon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TimerThread.cpp">
+    <ClCompile Include="SteepingTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -33,6 +33,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TrayNotifyIcon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SteepingTimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
